@@ -1,32 +1,44 @@
-<h1>Créer votre compte</h1>
-<form class=formulaire>
+<h1>Créez votre compte</h1>
+<form class="formulaire" [formGroup]="signupForm">
   
         <label for="nom">Nom: </label>
-        <input type="text" name="nom" id="nom" />
-        
+        <input type="text" name="nom" id="nom" formControlName="nom"/>
+        <!--Un message d'erreur pour l'utilisateur-->
+        <div class="alert alert-warning" *ngIf="nom.invalid && nom.touched">Votre nom ne peut pas être vide !</div>
         <br />
         <label for="prenom">Prénom: </label>
-        <input type="text" name="prenom" id="prenom" />
+        <input type="text" name="prenom" id="prenom" formControlName="prenom"/>
         <br />
         <label for="mail">E-Mail: </label>
-        <input type="text" name="mail" id="mail" />
+        <input type="text" name="mail" id="mail" formControlName="mail"/>
+      <!--Message d'erreur -->
+      <div *ngIf="mail.invalid && mail.touched" class="alert alert-warning">
+        <!--Premier cas: email vide-->
+        <div *ngIf="mail.errors?.required">Le champ e-mail ne peut pas être vide</div>
+        <!--Deuxième cas: email non conforme-->
+        <div *ngIf="mail.errors?.email">L'adresse saisie n'est pas valide !</div>
+      </div>
+  
          <br><label>Civilité:</label>
-         <select name="civilite">
-           <option *ngFor="let genre of civilite" value="{{ genre }}">
-             {{ genre }}
+         <select name="civilite" formControlName="civilite">
+           <option *ngFor="let genre of civilite" value="{{ genre.id }}">
+             {{ genre.libelle }}
             </option>
              </select>
              <br />
         <label for="mdp">Mot de passe: </label>
-        <input type="text" name="pass" id="pass" />
+        <input type="text" name="password" id="pass" formControlName="password"/>
+       
            <p>
                <br>
-               J'accepte la CGU <input type="checkbox" name="accept" value="accept">
+               J'accepte la CGU <input type="checkbox" name="cgu" value="accept" formControlName="cgu">
   
     </p>
         
 
     <div class="button">
-         <button type="submit">Créer mon compte</button>
+         <button type="submit" [disabled] ="signupForm.invalid">Créer mon compte</button>
      </div>
+     <!--à ne pas faire en production-->
+     <p>Valeurs: {{ signupForm.value | json }} : {{ signupForm.status | json}}</p>
 </form>
