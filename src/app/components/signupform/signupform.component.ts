@@ -16,18 +16,27 @@ export class SignupformComponent implements OnInit {
   private user: User;
   //instance pour le controle du formulaire
   public signupForm: FormGroup;
-
+//constructeur
   constructor(private builder: FormBuilder) { 
     this.civilite =new Array();
     this.civilite.push({id:1,libelle:"Mademoiselle"});
     this.civilite.push({id:2,libelle:"Madame"});
     this.civilite.push({id:3,libelle:"Monsieur"});
   }
-
+//pour la gestion d'erreurs
   public get nom(){ return this.signupForm.controls.nom;}
   public get mail(){ return this.signupForm.controls.mail;}
   public get password(){ return this.signupForm.controls.password;}
+//pour le submit du formulaire
+public onFormSubmit(): void {
+  if(this.signupForm.valid){
+    this.user = new User(this.signupForm.value);
+    console.log('Ça marche!' +JSON.stringify(this.user));
+  }else{
+    console.log('Same player shoots again !!!');
+  }
 
+}
   //méthode appeler immédiatement après le constructeur de la classe
   ngOnInit() {
     this.signupForm= this.builder.group({

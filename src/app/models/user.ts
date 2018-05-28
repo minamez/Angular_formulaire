@@ -10,4 +10,5 @@ export class User {
     public constructor(values:Object = {}){
         Object.assign(this,values);
     }
+ 
 }

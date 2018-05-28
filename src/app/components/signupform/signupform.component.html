@@ -1,5 +1,5 @@
 <h1>Créez votre compte</h1>
-<form class="formulaire" [formGroup]="signupForm">
+<form class="formulaire" [formGroup]="signupForm" (ngSubmit)="onFormSubmit()">
   
         <label for="nom">Nom: </label>
         <input type="text" name="nom" id="nom" formControlName="nom"/>
