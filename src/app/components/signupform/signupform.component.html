@@ -1,0 +1,32 @@
+<h1>Créer votre compte</h1>
+<form class=formulaire>
+  
+        <label for="nom">Nom: </label>
+        <input type="text" name="nom" id="nom" />
+        
+        <br />
+        <label for="prenom">Prénom: </label>
+        <input type="text" name="prenom" id="prenom" />
+        <br />
+        <label for="mail">E-Mail: </label>
+        <input type="text" name="mail" id="mail" />
+         <br><label>Civilité:</label>
+         <select name="civilite">
+           <option *ngFor="let genre of civilite" value="{{ genre }}">
+             {{ genre }}
+            </option>
+             </select>
+             <br />
+        <label for="mdp">Mot de passe: </label>
+        <input type="text" name="pass" id="pass" />
+           <p>
+               <br>
+               J'accepte la CGU <input type="checkbox" name="accept" value="accept">
+  
+    </p>
+        
+
+    <div class="button">
+         <button type="submit">Créer mon compte</button>
+     </div>
+</form>
