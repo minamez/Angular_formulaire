@@ -11,13 +11,16 @@ import { AuthguardService } from './services/authguard.service';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule,HttpClient } from '@angular/common/http';
+import { TodolistComponent } from './components/todolist/todolist.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupformComponent,
-    HomeComponent
+    HomeComponent,
+    TodolistComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
     RouterModule,
     RoutingModule,
     CommonModule,
+    HttpClientModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({
       timeOut: 10000,
@@ -32,6 +36,7 @@ import { ToastrModule } from 'ngx-toastr';
       preventDuplicates: true,
       
     }), // ToastrModule added
+ 
    
   ],
   providers: [AuthguardService],

@@ -1,3 +1,22 @@
-<p>
-  home works!
-</p>
+<form class="formulaire" [formGroup]="homeForm" (ngSubmit)="onFormSubmit()">
+  <h1><strong>Home</strong></h1>
+ 
+  <label for="task">Tâche:</label>
+  <input type="text" name="task" id="task" formControlName="task"/>
+  
+  
+  <label for="debut">Début :</label>
+  <input type="text" name="debut" id="debut" formControlName="debut"/>
+
+  <label for="fin">Fin :</label>
+  <input type="text" name="fin" id="fin" formControlName="fin"/>
+   
+  
+<div class="button">
+   <button type="submit">Créer</button>
+</div>
+</form>
+<br>
+
+<app-todolist></app-todolist>
+
