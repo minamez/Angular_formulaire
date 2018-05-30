@@ -6,6 +6,12 @@ import { RoutingModule } from './modules/routing/routing.module';
 import { AppComponent } from './app.component';
 import { SignupformComponent } from './components/signupform/signupform.component';
 import { HomeComponent } from './components/home/home.component';
+import { AuthguardService } from './services/authguard.service';
+//pour le toast
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -17,9 +23,22 @@ import { HomeComponent } from './components/home/home.component';
     BrowserModule,
     ReactiveFormsModule,
     RouterModule,
-    RoutingModule
+    RoutingModule,
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      
+    }), // ToastrModule added
+   
   ],
-  providers: [],
+  providers: [AuthguardService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+
+export class AppModule {
+
+ }

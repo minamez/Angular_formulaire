@@ -4,6 +4,7 @@ import { Civilite } from './../../models/civilite';
 import { User } from './../../models/user';
 import { UserService } from './../../services/user.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class SignupformComponent implements OnInit {
   //instance pour le controle du formulaire
   public signupForm: FormGroup;
 //constructeur
-  constructor(private builder: FormBuilder, private userService: UserService, private router: Router ) { 
+  constructor(private builder: FormBuilder, private userService: UserService,
+     private router: Router, private toastr: ToastrService ) { 
     this.civilite =new Array();
     this.civilite.push({id:1,libelle:"Mademoiselle"});
     this.civilite.push({id:2,libelle:"Madame"});
@@ -38,6 +40,8 @@ public onFormSubmit(): void {
       //Okay le traitement est terminé, on peut continuer
       console.log('User: '+JSON.stringify(datas));
       this.router.navigate(['home']);
+      this.toastr.success('Hello world!', 'Toastr fun!');
+
     })
   }else{
     console.log('Same player shoots again !!!');
